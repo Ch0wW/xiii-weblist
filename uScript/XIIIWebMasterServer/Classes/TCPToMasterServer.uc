@@ -162,8 +162,8 @@ event Timer ()
 
 defaultproperties
 {
-  MasterPage =  "/xiii/web/xiiiaddserver.php"
-  MasterIp =  "192.168.1.100"
+  MasterPage =  "xiiiaddserver.php" // Change it!
+  MasterIp =  "192.168.1.100"	// Change it!
   MasterPort = 80
   QueryPort= 7099
   VVVVVV=11286212359
