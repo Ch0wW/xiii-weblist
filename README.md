@@ -2,7 +2,7 @@
 This project is a Master-Server replacement done through PHP and an UScript beacon.
 The Official MasterServer (and Ubi.com service) has been discontinued in May 2014, and I wanted to make a simple alternative.
 
-##Usage (For Hosts)
+## Usage (For Hosts)
 0) Make sure the following ports are open:
 
 - 7777 TCP
@@ -11,17 +11,17 @@ The Official MasterServer (and Ubi.com service) has been discontinued in May 201
 1) Place your XIIIWebMasterServer.u package in your XIII/System/PC folder.
 
 2) Then, in your XIII.ini file, look at this part:
-[Engine.GameEngine]
+> [Engine.GameEngine]
 
 Search for this:
 
-ServerActors=IpDrv.UdpBeacon
+> ServerActors=IpDrv.UdpBeacon
 ServerActors=IpDrv.UdpServerQuery
 ServerActors=IpDrv.RegisterServerToUbiCom
 
 Replace it with this:
 
-ServerActors=XIIIWebMasterServer.XIIIUdpQuery 
+> ServerActors=XIIIWebMasterServer.XIIIUdpQuery 
 ServerActors=XIIIWebMasterServer.TCPToMasterServer
 ServerActors=XIIIWebMasterServer.TcpLinkClient
 
@@ -33,6 +33,6 @@ ServerActors=XIIIWebMasterServer.TcpLinkClient
 
 You don't need a custom client, or console to do this. All you actually need is to open the console (F2 key), and type this:
 
-Start Ip:Port (if other than 7777)
+> Start Ip:Port (if other than 7777)
 
 (exemple: start 11.22.33.44)
