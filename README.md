@@ -15,15 +15,14 @@ The Official MasterServer (and Ubi.com service) has been discontinued in May 201
 
 Search for this:
 
-> ServerActors=IpDrv.UdpBeacon
-ServerActors=IpDrv.UdpServerQuery
-ServerActors=IpDrv.RegisterServerToUbiCom
+> ServerActors=IpDrv.UdpBeacon<br />
+ServerActors=IpDrv.UdpServerQuery<br />
+ServerActors=IpDrv.RegisterServerToUbiCom<br />
 
 Replace it with this:
 
-> ServerActors=XIIIWebMasterServer.XIIIUdpQuery 
-ServerActors=XIIIWebMasterServer.TCPToMasterServer
-ServerActors=XIIIWebMasterServer.TcpLinkClient
+> ServerActors=XIIIWebMasterServer.XIIIUdpQuery <br />
+ServerActors=XIIIWebMasterServer.TCPToMasterServer<br />
 
 3) Now, host a LAN Server. It may take a bit more time than usual, but it's normal: it tells to the Web MasterServer than we exist. Every 6 minutes, it sends a heartbeat.
 
