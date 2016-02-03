@@ -22,9 +22,9 @@ ServerActors=IpDrv.RegisterServerToUbiCom<br />
 Replace it with this:
 
 > ServerActors=XIIIWebMasterServer.XIIIUdpQuery <br />
-ServerActors=XIIIWebMasterServer.TCPToMasterServer MasterIp=[ip] MasterPage=[webpage]<br />
+ServerActors=XIIIWebMasterServer.TCPToMasterServer MasterIp=[ip/url] MasterPage=[webpage]<br />
 
-(Example: <br />
+***Example:*** <br />
 >ServerActors=XIIIWebMasterServer.TCPToMasterServer MasterIp=192.168.1.100 MasterPage=xiii/xserveradd.php)
 
 3) Now, host a LAN Server. It may take a bit more time than usual, but it's normal: it tells to the Web MasterServer than we exist. Every 6 minutes, it sends a heartbeat.
@@ -37,4 +37,5 @@ You don't need a custom client, or console to do this. All you actually need is 
 
 > Start Ip:Port (if other than 7777)
 
-(exemple: start 11.22.33.44)
+***Example:*** <br />
+> start 11.22.33.44:7777
