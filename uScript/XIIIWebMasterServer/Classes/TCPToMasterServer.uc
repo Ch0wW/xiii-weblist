@@ -8,11 +8,11 @@ var XIIIUdpQuery      Query;                  // The query object.
 var int               VVVVVV;                 // Veni Vedi Vici Video Viper Verification
 var name              TargetQueryName;        // name of the query server object to use.
 
-var() config int QueryPort;                   // Query port.
-var() config string MasterIp;                 // Masterserver address
-var() config string MasterPage;               // Masterserver regisration page
-var() config int MasterPort;                  // Masterserver port (if not 80)
-var() config bool bWarningMsg;                // Warning Messages (Careful!!)
+var() globalconfig int QueryPort;                   // Query port.
+var() globalconfig string MasterIp;                 // Masterserver address
+var() globalconfig string MasterPage;               // Masterserver regisration page
+var() globalconfig int MasterPort;                  // Masterserver port (if not 80)
+var() globalconfig bool bWarningMsg;                // Warning Messages (Careful!!)
 
 const REQ_NONE = 0;
 const REQ_CREATED = 1;
@@ -125,7 +125,7 @@ function String XIIIHeaders ()
 {
   local string sHeader;
 
-  sHeader =  "POST "$MasterPage$" HTTP/1.0"$Chr(13)$Chr(10);
+  sHeader =  "POST /"$MasterPage$" HTTP/1.0"$Chr(13)$Chr(10);
   sHeader = sHeader$"User-Agent: HTTPTool/1.0"$Chr(13)$Chr(10);
   sHeader = sHeader$"Content-Type: application/x-www-form-urlencoded"$Chr(13)$Chr(10);
 
@@ -162,8 +162,8 @@ event Timer ()
 
 defaultproperties
 {
-  MasterPage =  "xiiiaddserver.php" // Change it!
-  MasterIp =  "192.168.1.100"	// Change it!
+  MasterPage =  "" // Change it!
+  MasterIp =  	"" // Change it!
   MasterPort = 80
   QueryPort= 7099
   VVVVVV=11286212359

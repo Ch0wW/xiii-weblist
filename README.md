@@ -22,7 +22,10 @@ ServerActors=IpDrv.RegisterServerToUbiCom<br />
 Replace it with this:
 
 > ServerActors=XIIIWebMasterServer.XIIIUdpQuery <br />
-ServerActors=XIIIWebMasterServer.TCPToMasterServer<br />
+ServerActors=XIIIWebMasterServer.TCPToMasterServer MasterIp=[ip] MasterPage=[webpage]<br />
+
+(Example: <br />
+>ServerActors=XIIIWebMasterServer.TCPToMasterServer MasterIp=192.168.1.100 MasterPage=xiii/xserveradd.php)
 
 3) Now, host a LAN Server. It may take a bit more time than usual, but it's normal: it tells to the Web MasterServer than we exist. Every 6 minutes, it sends a heartbeat.
 
