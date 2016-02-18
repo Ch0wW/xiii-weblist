@@ -8,7 +8,7 @@ The Official MasterServer (and Ubi.com service) has been discontinued in May 201
 - 7777 TCP
 - 7099 UDP
 
-1) Place your XIIIWebMasterServer.u package in your XIII/System/PC folder.
+1) Place your XIIIWebMasterServer.u package in your <<XIII INSTALL FOLDER>>/System/PC folder.
 
 2) Then, in your XIII.ini file, look at this part:
 > [Engine.GameEngine]
@@ -25,7 +25,7 @@ Replace it with this:
 ServerActors=XIIIWebMasterServer.TCPToMasterServer MasterIp=[ip/url] MasterPage=[webpage]<br />
 
 ***Example:*** <br />
->ServerActors=XIIIWebMasterServer.TCPToMasterServer MasterIp=192.168.1.100 MasterPage=xiii/xserveradd.php)
+>ServerActors=XIIIWebMasterServer.TCPToMasterServer MasterIp=192.168.1.100 MasterPage=xiii/xserveradd.php
 
 3) Now, host a LAN Server. It may take a bit more time than usual, but it's normal: it tells to the Web MasterServer than we exist. Every 6 minutes, it sends a heartbeat.
 
