@@ -8,7 +8,7 @@ The Official MasterServer (and Ubi.com service) has been discontinued in May 201
 - 7777 TCP
 - 7099 UDP
 
-1) Place your XIIIWebMasterServer.u package in your <<XIII INSTALL FOLDER>>/System/PC folder.
+1) Place your XIIIWebMasterServer.u package in your [XIII INSTALL FOLDER]/System/PC folder.
 
 2) Then, in your XIII.ini file, look at this part:
 > [Engine.GameEngine]
