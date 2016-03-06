@@ -9,6 +9,31 @@ define	("KEYPASS", 11286212359);
 
 class XIIIServerInfo
 {
+	
+	public function GetServerArray ()
+	{
+		require_once("database.php");
+		$db = new Database();
+		
+		$req = $db->conn->query('SELECT DISTINCT * FROM XIIIServer WHERE NOW() < SERVERVALIDTIME');
+		$result = $req->fetchAll(PDO::FETCH_ASSOC);
+		$db->conn = NULL;
+		
+		return $result;
+	}
+	
+	public function CountServers ()
+	{
+		require_once("database.php");
+		$db = new Database();
+		
+		$stmt = $db->conn->exec('SELECT COUNT(*) as CNT FROM XIIIServer WHERE NOW() < SERVERVALIDTIME');
+		$count = $stmt->fetch;
+		$db->conn = NULL;
+		
+		return $count['CNT'];
+	}
+	
 	/**
 	 * Returns the Gamemode used by the server
 	 * @param string $gamemode, $gameclass, $mutator
@@ -86,6 +111,60 @@ class XIIIServerInfo
 	
 class XIIICreatorInfo
 {		
+
+	public function CheckServerAlive ($ip, $port)
+	{
+		require_once("database.php");
+		$db = new Database();
+		
+		$pre = $db->conn->prepare('SELECT ID FROM XIIIServer WHERE SERVERIP="?" AND SERVERPORT="?" LIMIT 1');
+		$pre->execute(array($ip, $port));
+		$result = $pre->fetch();
+		$db = NULL;
+		
+		if ($result['ID'] != "")
+			return $result['ID'];
+		
+		return "";
+	}
+	
+	public function UpdateServer ($id)
+	{
+		require_once("database.php");
+		$db = new Database();
+		
+		try
+		{
+			$stmt = $db->conn->prepare("UPDATE XIIIServer SET SERVERVALIDTIME=DATE_ADD( NOW(), INTERVAL 6 MINUTE) WHERE id=?");
+			$stmt->execute(array($id));
+		}
+		catch (PDOException $e) {
+			return False;
+        }
+		
+		$db = NULL;
+		return True;
+	}
+	
+	public function AddServer ($ip, $port, $queryport)
+	{
+		require_once("database.php");
+		$db = new Database();
+		
+		try
+		{
+			$stmt = $db->conn->prepare("INSERT INTO XIIIServer(ID, SERVERIP, SERVERPORT, SERVERQUERY,SERVERCREATION,SERVERVALIDTIME) values( LAST_INSERT_ID(),?,?,?, NOW(), DATE_ADD( NOW(), INTERVAL 6 MINUTE))");
+			$stmt->execute(array($ip, $port, $queryport));
+		}
+		catch(PDOException $e) {
+			echo ("?????");
+			return False;
+        }
+		
+		$db = NULL;
+		return True;
+	}
+	
 	public function Get_Port()
 	{
 		if (!isset ($_POST["xiiiport"]))
