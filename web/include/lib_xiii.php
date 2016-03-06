@@ -22,18 +22,6 @@ class XIIIServerInfo
 		return $result;
 	}
 	
-	public function CountServers ()
-	{
-		require_once("database.php");
-		$db = new Database();
-		
-		$stmt = $db->conn->exec('SELECT COUNT(*) as CNT FROM XIIIServer WHERE NOW() < SERVERVALIDTIME');
-		$count = $stmt->fetch;
-		$db->conn = NULL;
-		
-		return $count['CNT'];
-	}
-	
 	/**
 	 * Returns the Gamemode used by the server
 	 * @param string $gamemode, $gameclass, $mutator
@@ -117,9 +105,8 @@ class XIIICreatorInfo
 		require_once("database.php");
 		$db = new Database();
 		
-		$pre = $db->conn->prepare('SELECT ID FROM XIIIServer WHERE SERVERIP="?" AND SERVERPORT="?" LIMIT 1');
-		$pre->execute(array($ip, $port));
-		$result = $pre->fetch();
+		$pre = $db->conn->query('SELECT `ID` FROM XIIIServer WHERE SERVERIP="'.$ip.'" AND SERVERPORT="'.$port.'"');
+		$result = $pre->fetch(PDO::FETCH_ASSOC);		
 		$db = NULL;
 		
 		if ($result['ID'] != "")

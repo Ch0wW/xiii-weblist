@@ -18,7 +18,7 @@
 	</head>
 
 <?	
-	$count = $info->CountServers();
+	$count = 0;
 	$arrayquery = $info->GetServerArray();
 	
 	// Make a test for each server.
@@ -26,7 +26,7 @@
 	{
 	    $gameserver=gsQuery::createInstance("gsqp", $row['SERVERIP'], $row['SERVERQUERY']);
 		
-        if($gameserver && $gameserver->query_server(FALSE, FALSE)) 
+		if($gameserver && $gameserver->query_server(FALSE, FALSE)) 
 		{
 			$hostname = $gameserver->htmlize($gameserver->hostname);
 			$map = htmlentities($gameserver->mapname);
@@ -39,6 +39,7 @@
 		else
 			echo ($row['SERVERIP']. ":". $row['SERVERPORT'] .'( No Beacon Received. Is the server down? )<br />');
 		
+		$count++;
 		$gameserver = NULL;	
 	}
 	
