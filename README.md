@@ -1,8 +1,8 @@
 # xiii-weblist
 This project is a Master-Server replacement done through PHP and an UScript beacon.
-The Official MasterServer (and Ubi.com service) has been discontinued in May 2014, and I wanted to make a simple alternative.
+The Official MasterServer (and Ubi.com service) has been discontinued in May 2012, and I wanted to make a simple alternative.
 
-## Usage (For Hosts)
+## Usage (For Server Hosters)
 0) Make sure the following ports are open:
 
 - 7777 TCP
@@ -39,3 +39,13 @@ You don't need a custom client, or console to do this. All you actually need is 
 
 ***Example:*** <br />
 > start 11.22.33.44:7777
+
+## Usage (For WebHosters)
+1) Make sure your server has PHP, SQL, and the PDO class for MySQL.
+If you use something else, you can modify it in include/database.php.
+
+2) Install the SQL database.
+
+3) In Include/config.php, modify the settings, so that your webpage can connect to the database.
+
+4) Test if your game can declare an instance of the game.
